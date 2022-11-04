@@ -24,9 +24,7 @@ abstract class ThemeState with Store {
   @computed
   ThemeData get themeData => isDarkMode ? _darkTheme : _lightTheme;
 
-  ThemeData get _darkTheme => ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
+  ThemeData get _darkTheme => _lightTheme.copyWith(
         brightness: Brightness.dark,
       );
   ThemeData get _lightTheme => ThemeData(

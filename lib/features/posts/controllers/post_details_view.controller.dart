@@ -10,7 +10,8 @@ part 'post_details_view.controller.g.dart';
 class PostDetailsViewController = PostDetailsController
     with _$PostDetailsViewController;
 
-/// The PostsController is an abstract class that extends Store and has a PostsRepository injected into
+/// The PostsController is an abstract class that extends Store and has a
+///  PostsRepository injected into
 /// it
 abstract class PostDetailsController with Store {
   /// Injecting the PostsRepository into the PostsController.

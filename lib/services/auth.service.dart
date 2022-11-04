@@ -7,6 +7,8 @@ import 'package:mobx/mobx.dart';
 part 'auth.service.g.dart';
 
 @LazySingleton()
+
+/// _AuthServiceBase is a mixin that uses _ as a backing store
 class AuthService = _AuthServiceBase with _$AuthService;
 
 abstract class _AuthServiceBase with Store {

@@ -11,6 +11,7 @@ import 'package:mobx/mobx.dart';
 part 'auth.controller.g.dart';
 
 /// It's a way to create a list of constants.
+// ignore: public_member_api_docs
 enum FormFieldType { username, password }
 
 /// `AuthViewController` that uses `AuthController` to manage its state
@@ -19,12 +20,14 @@ class AuthViewController = AuthController with _$AuthViewController;
 
 /// It's a class that manages the state of the login page
 abstract class AuthController with Store {
+  // ignore: public_member_api_docs
   AuthController(this._authBox, this._authService, this._authRepository);
 
   final AuthService _authService;
   final AuthRepository _authRepository;
   final AuthBox _authBox;
 
+  /// It's a way to create a list of form fields.
   final Map<FormFieldType, TextEditingController> textControllers = {
     FormFieldType.username: TextEditingController(text: 'kminchelle'),
     FormFieldType.password: TextEditingController(text: '0lelplR'),

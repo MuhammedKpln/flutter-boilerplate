@@ -9,7 +9,8 @@ part 'posts_view.controller.g.dart';
 @LazySingleton()
 class PostsViewController = PostsController with _$PostsViewController;
 
-/// The PostsController is an abstract class that extends Store and has a PostsRepository injected into
+/// The PostsController is an abstract class that extends Store and has a
+///  PostsRepository injected into
 /// it
 abstract class PostsController with Store {
   /// Injecting the PostsRepository into the PostsController.
@@ -19,8 +20,13 @@ abstract class PostsController with Store {
   final PostsRepository _postsRepository;
 
   @observable
+
+  /// A Future that is observable.
   ObservableFuture<BasePosts>? posts;
 
+  /// `fetchPosts()` is an `async` function that fetches posts from the
+  ///  repository and sets the `posts` property
+  ///  to an `ObservableFuture` of the response
   @action
   Future<void> fetchPosts() async {
     try {

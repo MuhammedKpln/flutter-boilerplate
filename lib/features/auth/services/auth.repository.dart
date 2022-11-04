@@ -6,11 +6,13 @@ import 'package:boilerplate/repositories/_base.repository.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-/// It takes an email and password, sends them to the server, and returns the response
+/// It takes an email and password, sends them to the server, and returns the
+///  response
 
 @LazySingleton()
 class AuthRepository extends BaseRepository {
-  /// It takes an email and password, sends them to the server, and returns the response
+  /// It takes an email and password, sends them to the server, and returns the
+  /// response
   ///
   /// Args:
   ///   email (String): The email address of the user.
@@ -30,8 +32,7 @@ class AuthRepository extends BaseRepository {
       }
 
       throw Exception();
-    } on DioError catch (err) {
-      print(err.response);
+    } on DioError {
       rethrow;
     }
   }

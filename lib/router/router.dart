@@ -70,7 +70,7 @@ class AppRouter {
       ),
     ],
     redirect: (context, state) {
-      final loginState = _appController.loginState;
+      final loginState = _appController.authService.loginState;
       final loginLocation = state.namedLocation(RouteMetaData.login.routeName);
       final homeLocation = state.namedLocation(RouteMetaData.posts.routeName);
       final isInLoginPage = state.location == loginLocation;

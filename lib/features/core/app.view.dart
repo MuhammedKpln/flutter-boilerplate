@@ -2,6 +2,7 @@ import 'package:boilerplate/core/constants/core.dart';
 import 'package:boilerplate/core/di/di.dart';
 import 'package:boilerplate/router/router.dart';
 import 'package:boilerplate/services/app.service.dart';
+import 'package:boilerplate/services/auth.service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -15,12 +16,12 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final appController = getIt<AppService>();
+  final authService = getIt<AuthService>();
 
   @override
   void initState() {
     super.initState();
-    appController.checkLoginState();
+    authService.checkLoginState();
   }
 
   @override

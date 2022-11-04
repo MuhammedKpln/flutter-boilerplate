@@ -1,8 +1,9 @@
 import 'package:boilerplate/features/auth/enums.dart';
 import 'package:boilerplate/features/auth/models/auth.model.dart';
 import 'package:boilerplate/features/auth/services/auth.repository.dart';
+import 'package:boilerplate/features/auth/storage/auth.adapter.dart';
 import 'package:boilerplate/features/auth/storage/auth.storage.dart';
-import 'package:boilerplate/services/app.service.dart';
+import 'package:boilerplate/services/auth.service.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobx/mobx.dart';
@@ -18,10 +19,10 @@ class AuthViewController = AuthController with _$AuthViewController;
 
 /// It's a class that manages the state of the login page
 abstract class AuthController with Store {
-  AuthController(this._appController, this._authBox, this._authService);
+  AuthController(this._authBox, this._authService, this._authRepository);
 
-  final AppService _appController;
   final AuthService _authService;
+  final AuthRepository _authRepository;
   final AuthBox _authBox;
 
   final Map<FormFieldType, TextEditingController> textControllers = {
@@ -58,16 +59,15 @@ abstract class AuthController with Store {
   Future<void> login() async {
     try {
       loading = true;
-      print(username);
-      print(password);
-      final login = await _authService.login(
+      final login = await _authRepository.login(
         AuthLoginArgs(
           username: username,
           password: password,
         ),
       );
-      await _authBox.saveUser(login);
-      _appController.setLoginState(LoginState.loggedIn);
+      await _authBox.saveUser(AuthModel(user: login, accessToken: login.token));
+      await _authService.setLoginState(LoginState.loggedIn);
+      await _authService.setUser(login);
 
       loading = false;
     } catch (err) {
@@ -83,6 +83,6 @@ abstract class AuthController with Store {
   /// This is the only line of code that matters
   Future<void> logout() async {
     await _authBox.clear();
-    _appController.setLoginState(LoginState.none);
+    await _authService.setLoginState(LoginState.none);
   }
 }

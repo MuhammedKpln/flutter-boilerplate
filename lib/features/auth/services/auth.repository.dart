@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 /// It takes an email and password, sends them to the server, and returns the response
 
 @LazySingleton()
-class AuthService extends BaseRepository {
+class AuthRepository extends BaseRepository {
   /// It takes an email and password, sends them to the server, and returns the response
   ///
   /// Args:

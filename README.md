@@ -37,9 +37,9 @@
 ## Getting Started
 
 ```shell
-$ git clone https://github.com/ganeshrvel/flutter_mobx_dio_boilerplate.git
+$ git clone https://github.com/MuhammedKpln/flutter-boilerplate.git
 
-$ cd flutter_mobx_dio_boilerplate
+$ cd flutter-boilerplate
 ```
 
 ```shell
